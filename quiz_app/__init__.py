@@ -21,10 +21,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    @app.after_request
+    def add_header(response):
+        response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload'
+        return response
+    
     @app.route('/')
     def index():
         return render_template('index.html')
-
+    
     from . import db
     db.init_app(app)
 
@@ -36,5 +41,8 @@ def create_app(test_config=None):
 
     from . import interface
     app.register_blueprint(interface.bp)
+    
+    from . import approve
+    app.register_blueprint(approve.bp)
 
     return app
