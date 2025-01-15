@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+  <title>{% block title %}{% endblock %}</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="/static/bk.css">
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  {% block inhead %}{% endblock %}
+</head>
+<body>
+  <div class="pop_up">
+    {% with messages = get_flashed_messages() %}  
+      {% if messages %}  
+        {% for message in messages %}  
+          <p>{{ message }}</p>  
+        {% endfor %}  
+      {% endif %}  
+    {% endwith %}  
+  </div>
+  {% block content %}{% endblock %}
+  
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+  {% block title %}Register{% endblock %}
+  {% block content %}
+    <form method="post">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required>
+      <label for="email_id">Email ID</label>
+      <input type="email" name="email_id" id="email_id" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required minlength="8">
+      <input type="submit" value="Register">
+    </form>
+    <p>Already have an account? <a type="button" href="{{ url_for('auth.login_student') }}">Log In as Student</a></p>
+    <p>Are you an Admin? <a type="button" href="{{ url_for('auth.login_admin') }}">Log In as Admin</a></p>
+  {% endblock %}
